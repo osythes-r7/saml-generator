@@ -23,7 +23,7 @@ You will need to create the jar file in order to use the command line tool. cd t
 Usage
 -----
 
-java -jar saml-generator-1.0.jar [-domain <arg>] [-issuer <arg>] [-privateKey <arg>] [-publicKey <arg>] [-roles <arg>] [-email <arg>] [-samlAssertionExpirationDays <arg>] [-subject <arg>]
+java -jar target/saml-generator-1.0.jar [-domain <arg>] [-issuer <arg>] [-privateKey <arg>] [-publicKey <arg>] [-roles <arg>] [-email <arg>] [-samlAssertionExpirationDays <arg>] [-subject <arg>]
 
 ```
 -issuer
@@ -49,12 +49,15 @@ The path to the location of the private key to use to sign assertions
 
 -samlAssertionExpirationDays
 How long before the assertion is no longer valid
+
+-rbacUserGroups
+User-groups to assign to user in RBAC
 ```
 
 Example
 -------
 
-java -jar saml-generator-1.0.jar -domain 7719 -issuer 'http://some.compnay.com' -privateKey saml.pkcs8 -publicKey saml.crt -roles 'role1' -samlAssertionExpirationDays 5 -subject samlUser1
+java -jar target/saml-generator-1.0.jar -domain 7719 -issuer 'http://some.compnay.com' -privateKey saml.pkcs8 -publicKey saml.crt -roles 'role1' -samlAssertionExpirationDays 5 -subject samlUser1 -rbacUserGroups 'OPs-Admins'
 
 Output:
 ```

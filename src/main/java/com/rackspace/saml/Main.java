@@ -36,6 +36,7 @@ public class Main {
 			options.addOption("publicKey", true, "Location of public key to decrypt assertion");
 			options.addOption("privateKey", true, "Location or private key use to sign assertion");
 			options.addOption("samlAssertionExpirationDays", true, "How long before assertion is no longer valid. Can be negative.");
+			options.addOption("rbacUserGroups", true, "RBAC user groups");
 			
 			CommandLineParser parser = new GnuParser();
 			CommandLine cmd = parser.parse(options, args);
@@ -61,6 +62,9 @@ public class Main {
 
             if (cmd.getOptionValue("email") != null)
                 attributes.put("email", Arrays.asList(cmd.getOptionValue("email")));
+
+			if (cmd.getOptionValue("rbacUserGroups") != null)
+				attributes.put("rbacUserGroups", Arrays.asList(cmd.getOptionValue("rbacUserGroups")));
 
 			SamlAssertionProducer producer = new SamlAssertionProducer();
 			producer.setPrivateKeyLocation(privateKey);
